@@ -7,8 +7,8 @@
     
     body{
     background-image:url('/Assets/Fotos/uitstoting-bg.jpeg');
-    
-
+    width: 100%;
+    height: 100%;
     }
     
     .home-button{
