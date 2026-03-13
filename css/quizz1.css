@@ -6,7 +6,7 @@
     }
     
     body{
-    background-image:url('achtergrondquiz.jpg');
+    background-image:url('/Assets/Fotos/uitstoting-bg.jpeg');
     background-size:cover;
     background-position:center;
     min-height:100vh;
