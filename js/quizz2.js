@@ -88,135 +88,162 @@ const questions = [
             { text: "Het verandert de kleur van de lucht", correct: false },
             { text: "Het stopt de wind", correct: false }
         ]
+    },
+
+    {
+        type: "open",
+        question: "Noem een voorbeeld van extreem weer dat vaker voorkomt door klimaatverandering.",
+        correctAnswer: "hittegolf"
+    },
+    {
+        type: "open",
+        question: "Welke natuurramp kan ontstaan door langdurige droogte en hitte?",
+        correctAnswer: "bosbrand"
+    },
+    {
+        type: "open",
+        question: "Wat kan er gebeuren als er extreem veel regen in korte tijd valt?",
+        correctAnswer: "overstroming"
+    },
+    {
+        type: "open",
+        question: "Welke soort storm kan sterker worden door warmer oceaanwater?",
+        correctAnswer: "orkaan"
+    },
+    {
+        type: "open",
+        question: "Wat stijgt door klimaatverandering waardoor kusten sneller overstromen?",
+        correctAnswer: "zeespiegel"
     }
 ];
-    
-    const questionElement = document.getElementById("question");
-    const answerButtons = document.getElementById("answer-buttons");
-    const nextButton = document.getElementById("next-btn");
-    
-    const correctSound = document.getElementById("correctSound");
-    const wrongSound = document.getElementById("wrongSound");
-    
-    let currentQuestionIndex = 0;
-    let score = 0;
-    
-    function startQuiz(){
+
+const questionElement = document.getElementById("question");
+const answerButtons = document.getElementById("answer-buttons");
+const nextButton = document.getElementById("next-btn");
+
+const correctSound = document.getElementById("correctSound");
+const wrongSound = document.getElementById("wrongSound");
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+
+function shuffle(array){
+    for(let i = array.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+
+function startQuiz(){
+    shuffle(questions);
     currentQuestionIndex = 0;
     score = 0;
     nextButton.innerHTML = "Volgende";
     showQuestion();
-    }
-    
-    function showQuestion(){
+}
+function showQuestion(){
     resetState();
-    
     let currentQuestion = questions[currentQuestionIndex];
-    questionElement.innerHTML = currentQuestionIndex + 1 + ". " + currentQuestion.question;
-    
-    currentQuestion.answers.forEach(answer => {
-    
-    const button = document.createElement("button");
-    button.innerHTML = answer.text;
-    button.classList.add("btn");
-    
-    if(answer.correct){
-    button.dataset.correct = answer.correct;
+    questionElement.innerHTML = `${currentQuestionIndex + 1}. ${currentQuestion.question}`;
+
+    if(currentQuestion.type === "open"){
+        const input = document.createElement("input");
+        input.type = "text";
+        input.id = "openAnswer";
+        input.placeholder = "Typ je antwoord...";
+        input.classList.add("btn");
+        answerButtons.appendChild(input);
+
+        const button = document.createElement("button");
+        button.innerHTML = "Controleer";
+        button.classList.add("btn");
+
+        button.onclick = function(){
+            const userAnswer = input.value.toLowerCase();
+            if(userAnswer.includes(currentQuestion.correctAnswer.toLowerCase())){
+                score++;
+                correctSound.currentTime = 0;
+                correctSound.play();
+                input.style.backgroundColor = "#9aeabc";
+            } else{
+                wrongSound.currentTime = 0;
+                wrongSound.play();
+                input.style.backgroundColor = "#ff9393";
+            }
+            nextButton.style.display = "block";
+        };
+
+        answerButtons.appendChild(button);
+
+    } else {
+        currentQuestion.answers.forEach(answer => {
+            const button = document.createElement("button");
+            button.innerHTML = answer.text;
+            button.classList.add("btn");
+
+            if(answer.correct){
+                button.dataset.correct = answer.correct;
+            }
+
+            button.addEventListener("click", selectAnswer);
+            answerButtons.appendChild(button);
+        });
     }
-    
-    button.addEventListener("click", selectAnswer);
-    
-    answerButtons.appendChild(button);
-    
-    });
-    }
-    
-    function resetState(){
-    
+}
+function resetState(){
     nextButton.style.display = "none";
-    
     while(answerButtons.firstChild){
-    answerButtons.removeChild(answerButtons.firstChild);
+        answerButtons.removeChild(answerButtons.firstChild);
     }
-    
-    }
-    
-    function selectAnswer(e){
-    
+}
+function selectAnswer(e){
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
-    
+
     if(isCorrect){
-    
-    selectedBtn.classList.add("correct");
-    score++;
-    
-    correctSound.currentTime = 0;
-    correctSound.play();
-    
-    }else{
-    
-    selectedBtn.classList.add("incorrect");
-    
-    wrongSound.currentTime = 0;
-    wrongSound.play();
-    
+        selectedBtn.classList.add("correct");
+        score++;
+        correctSound.currentTime = 0;
+        correctSound.play();
+    } else{
+        selectedBtn.classList.add("incorrect");
+        wrongSound.currentTime = 0;
+        wrongSound.play();
     }
-    
+
     Array.from(answerButtons.children).forEach(button => {
-    
-    if(button.dataset.correct === "true"){
-    button.classList.add("correct");
-    }
-    
-    button.disabled = true;
-    
+        if(button.dataset.correct === "true"){
+            button.classList.add("correct");
+        }
+        button.disabled = true;
     });
-    
+
     nextButton.style.display = "block";
-    
-    }
-    
-    function showScore(){
-    
+}
+function showScore(){
     resetState();
-    
     questionElement.innerHTML = `Je had ${score} van de ${questions.length} goed!`;
-    
     nextButton.innerHTML = "Opnieuw";
-    
     nextButton.style.display = "block";
-    
-    }
-    
-    function handleNextButton(){
-    
+}
+
+function handleNextButton(){
     currentQuestionIndex++;
-    
     if(currentQuestionIndex < questions.length){
-    
-    showQuestion();
-    
-    }else{
-    
-    showScore();
-    
+        showQuestion();
+    } else{
+        showScore();
     }
-    
-    }
-    
-    nextButton.addEventListener("click", ()=>{
-    
+}
+
+nextButton.addEventListener("click", ()=>{
     if(currentQuestionIndex < questions.length){
-    
-    handleNextButton();
-    
-    }else{
-    
-    startQuiz();
-    
+        handleNextButton();
+    } else{
+        startQuiz();
     }
-    
-    });
-    
-    startQuiz();z
+});
+
+startQuiz();
