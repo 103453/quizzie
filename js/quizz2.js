@@ -136,10 +136,15 @@ let score = 0;
 let userName = "";
 
 const images = [
-    "/Assets/Fotos/icoon.webp",
     "/Assets/Fotos/extreemweer1.jpg",
     "/Assets/Fotos/extreemweer2.png",
-    "/Assets/Fotos/extreemweer3.png"
+    "/Assets/Fotos/extreemweer3.jpg",
+    "/Assets/Fotos/extreemweer4.jpg",
+    "/Assets/Fotos/extreemweer5.jpeg",
+    "/Assets/Fotos/extreemweer6.jpg",
+    "/Assets/Fotos/extreemweer7.jpg",
+    "/Assets/Fotos/extreemweer8.jpeg",
+    "/Assets/Fotos/extreemweer9.jpg"
 ];
 
 // naam
@@ -224,7 +229,7 @@ function showQuestion() {
     }
 }
 
-// select answer
+// select antwoord
 function selectAnswer(e) {
     const btn = e.target;
     const correct = btn.dataset.correct === "true";
@@ -268,11 +273,14 @@ function resetState() {
 function showScore() {
     resetState();
     questionElement.innerHTML = `${userName}, je had ${score} van de ${questions.length} goed!`;
+
+    extraImage.src = "/Assets/Fotos/Cup.jpg";
+
     nextButton.innerHTML = "Opnieuw";
     nextButton.style.display = "block";
 }
 
-// next
+// volgende
 function handleNextButton() {
     currentQuestionIndex++;
     if (currentQuestionIndex < questions.length) {
