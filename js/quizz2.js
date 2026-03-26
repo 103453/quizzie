@@ -2,95 +2,95 @@ const questions = [
     {
         question: "Welke vorm van extreem weer komt vaker voor door klimaatverandering?",
         answers: [
-            { text: "Hittegolven", correct: true, explanation: "Hittegolven komen vaker voor doordat de gemiddelde temperatuur op aarde stijgt door klimaatverandering. Hierdoor ontstaan er vaker periodes van extreme hitte die langer aanhouden en intensiever zijn." },
-            { text: "Mist", correct: false, explanation: "Mist is een lokaal weerfenomeen dat ontstaat door temperatuur- en vochtverschillen en wordt niet direct veroorzaakt door klimaatverandering." },
-            { text: "Lichte wind", correct: false, explanation: "Windsterkte wordt niet specifiek beïnvloed door klimaatverandering." },
-            { text: "Bewolkt weer", correct: false, explanation: "Bewolking is afhankelijk van weersomstandigheden en niet direct extreem weer." }
+            { text: "Hittegolven", correct: true, explanation: "Hittegolven nemen toe omdat de gemiddelde temperatuur op aarde stijgt. Warme lucht en langere warme periodes zorgen ervoor dat periodes van extreme hitte frequenter en intensiever worden." },
+            { text: "Mist", correct: false, explanation: "Mist ontstaat door lokale temperatuur- en vochtverschillen. Klimaatverandering beïnvloedt mist niet direct, hoewel veranderde weerspatronen het aantal mistdagen enigszins kunnen beïnvloeden." },
+            { text: "Lichte wind", correct: false, explanation: "Lichte wind is normaal weer. Klimaatverandering verandert de gemiddelde wind niet significant, maar kan wel leiden tot krachtigere stormen." },
+            { text: "Bewolkt weer", correct: false, explanation: "Bewolking varieert dagelijks door lokale omstandigheden en wordt niet direct extremer door klimaatverandering." }
         ]
     },
     {
         question: "Waarom worden hittegolven vaker en sterker?",
         answers: [
-            { text: "Omdat de aarde gemiddeld warmer wordt", correct: true, explanation: "Door de stijgende wereldtemperatuur verschuift het klimaat, waardoor hittegolven vaker voorkomen en intensiever en langer aanhouden." },
-            { text: "Omdat de zon groter wordt", correct: false, explanation: "De zon verandert niet op korte termijn in grootte." },
-            { text: "Omdat de aarde langzamer draait", correct: false, explanation: "De rotatie van de aarde blijft constant." },
-            { text: "Omdat de maan dichterbij komt", correct: false, explanation: "De maan heeft geen invloed op hittegolven." }
+            { text: "Omdat de aarde gemiddeld warmer wordt", correct: true, explanation: "Een stijgende gemiddelde temperatuur verhoogt de kans op extreme hitte. Hierdoor worden hittegolven frequenter, duren langer en kunnen ze gevaarlijker zijn voor mens en natuur." },
+            { text: "Omdat de zon groter wordt", correct: false, explanation: "De zon verandert niet merkbaar op korte termijn. Hit­tegolven hebben hier geen verband mee." },
+            { text: "Omdat de aarde langzamer draait", correct: false, explanation: "De rotatie van de aarde blijft vrijwel constant. Klimaatverandering veroorzaakt dit niet." },
+            { text: "Omdat de maan dichterbij komt", correct: false, explanation: "De maan beïnvloedt vooral eb en vloed, niet het ontstaan van hittegolven." }
         ]
     },
     {
         question: "Wat kan er gebeuren als er in korte tijd extreem veel regen valt?",
         answers: [
-            { text: "Overstromingen", correct: true, explanation: "Als regen sneller valt dan het kan worden afgevoerd, kan dit leiden tot overstromingen." },
-            { text: "Kortere dagen", correct: false, explanation: "De lengte van dagen verandert niet door regen." },
-            { text: "Meer bergen", correct: false, explanation: "Regen verandert het landschap niet direct in bergen." },
-            { text: "Minder rivieren", correct: false, explanation: "Regen zorgt juist voor meer water in rivieren." }
+            { text: "Overstromingen", correct: true, explanation: "Wanneer het regenwater sneller valt dan het kan worden afgevoerd door rivieren of riolen, kan water zich ophopen en overstromingen veroorzaken." },
+            { text: "Kortere dagen", correct: false, explanation: "De lengte van de dagen wordt bepaald door de rotatie van de aarde, niet door regenval." },
+            { text: "Meer bergen", correct: false, explanation: "Regen kan erosie veroorzaken, maar creëert geen nieuwe bergen." },
+            { text: "Minder rivieren", correct: false, explanation: "Regen verhoogt juist de waterstand in rivieren, het vermindert ze niet." }
         ]
     },
     {
         question: "Waarom kunnen regenbuien heviger worden door klimaatverandering?",
         answers: [
-            { text: "Warme lucht kan meer waterdamp vasthouden", correct: true, explanation: "Warme lucht bevat meer vocht, waardoor regenbuien heviger kunnen worden." },
-            { text: "De aarde draait sneller", correct: false, explanation: "De draaisnelheid heeft geen invloed op regen." },
-            { text: "Er zijn minder wolken", correct: false, explanation: "Dit is geen direct gevolg van klimaatverandering." },
-            { text: "De zon staat dichter bij de aarde", correct: false, explanation: "De afstand tot de zon verandert niet relevant." }
+            { text: "Warme lucht kan meer waterdamp vasthouden", correct: true, explanation: "Een warmere atmosfeer kan meer vocht bevatten. Als deze lucht afkoelt, valt al dat extra vocht in de vorm van hevige regenbuien neer." },
+            { text: "De aarde draait sneller", correct: false, explanation: "De rotatiesnelheid van de aarde verandert niet, dus dit beïnvloedt regenbuien niet." },
+            { text: "Er zijn minder wolken", correct: false, explanation: "Klimaatverandering verandert de wolkenvorming lokaal, maar hevige regen ontstaat juist door meer vocht in de lucht." },
+            { text: "De zon staat dichter bij de aarde", correct: false, explanation: "De afstand tot de zon verandert niet relevant voor regenbuien op aarde." }
         ]
     },
     {
         question: "Welke ramp kan ontstaan door langdurige hitte en droogte?",
         answers: [
-            { text: "Bosbranden", correct: true, explanation: "Droge vegetatie kan makkelijk ontbranden, waardoor bosbranden ontstaan." },
-            { text: "Sneeuwstormen", correct: false, explanation: "Deze ontstaan in koude omstandigheden." },
-            { text: "Mist", correct: false, explanation: "Mist ontstaat door condensatie, niet door droogte." },
-            { text: "Hagelbuien", correct: false, explanation: "Hagel ontstaat in onweerswolken." }
+            { text: "Bosbranden", correct: true, explanation: "Bij langdurige hitte en droogte droogt vegetatie uit, waardoor het makkelijker ontbrandt. Klimaatverandering vergroot dit risico wereldwijd." },
+            { text: "Sneeuwstormen", correct: false, explanation: "Sneeuwstormen hebben koude temperaturen nodig en ontstaan juist niet door droogte." },
+            { text: "Mist", correct: false, explanation: "Mist ontstaat door condensatie van vochtige lucht en heeft weinig te maken met droogte." },
+            { text: "Hagelbuien", correct: false, explanation: "Hagel ontstaat in sterke onweersbuien, niet door droogte en hitte." }
         ]
     },
     {
         question: "Wat gebeurt er vaak met droogtes door klimaatverandering?",
         answers: [
-            { text: "Ze duren langer en worden heviger", correct: true, explanation: "Door hogere temperaturen en minder neerslag nemen droogtes toe in duur en intensiteit." },
-            { text: "Ze verdwijnen helemaal", correct: false, explanation: "Droogtes verdwijnen niet." },
-            { text: "Ze komen alleen in de winter", correct: false, explanation: "Droogtes kunnen in alle seizoenen voorkomen." },
-            { text: "Ze worden korter", correct: false, explanation: "Ze worden juist vaak langer." }
+            { text: "Ze duren langer en worden heviger", correct: true, explanation: "Hogere temperaturen en minder neerslag leiden tot intensere droogtes die langer aanhouden, waardoor landbouw en ecosystemen zwaar onder druk komen te staan." },
+            { text: "Ze verdwijnen helemaal", correct: false, explanation: "Droogtes verdwijnen niet; klimaatverandering kan ze juist verergeren." },
+            { text: "Ze komen alleen in de winter", correct: false, explanation: "Droogtes kunnen in elk seizoen voorkomen, afhankelijk van regionale klimaatpatronen." },
+            { text: "Ze worden korter", correct: false, explanation: "Door klimaatverandering worden droogtes meestal langer en ernstiger." }
         ]
     },
     {
         question: "Wat kan warm oceaanwater versterken?",
         answers: [
-            { text: "Orkanen en tropische stormen", correct: true, explanation: "Warm water levert energie aan stormen, waardoor ze sterker worden." },
-            { text: "Mist", correct: false, explanation: "Mist wordt niet hierdoor versterkt." },
-            { text: "Lichte regen", correct: false, explanation: "Niet direct beïnvloed." },
-            { text: "Sneeuw", correct: false, explanation: "Komt niet voor in tropische gebieden." }
+            { text: "Orkanen en tropische stormen", correct: true, explanation: "Warm oceaanwater geeft energie aan tropische stormen, waardoor ze krachtiger worden. Dit is een direct gevolg van klimaatverandering, omdat oceanen opwarmen." },
+            { text: "Mist", correct: false, explanation: "Mist wordt vooral veroorzaakt door lokale temperatuurverschillen, niet door oceaanwarmte." },
+            { text: "Lichte regen", correct: false, explanation: "Lichte regen wordt niet direct beïnvloed door warme oceanen." },
+            { text: "Sneeuw", correct: false, explanation: "Sneeuw komt in koude omstandigheden voor en wordt niet versterkt door warm oceaanwater." }
         ]
     },
     {
         question: "Wat kan een combinatie van zware stormen en stijgende zeespiegel veroorzaken?",
         answers: [
-            { text: "Kustoverstromingen", correct: true, explanation: "Een hogere zeespiegel vergroot het risico op overstromingen bij stormen." },
-            { text: "Meer bergen", correct: false, explanation: "Geen invloed." },
+            { text: "Kustoverstromingen", correct: true, explanation: "Stijgende zeespiegels zorgen ervoor dat stormen die normaal geen schade zouden aanrichten, nu stranden en steden kunnen overstromen." },
+            { text: "Meer bergen", correct: false, explanation: "Bergen ontstaan door geologische processen, niet door stormen." },
             { text: "Minder wind", correct: false, explanation: "Stormen brengen juist meer wind." },
-            { text: "Kortere nachten", correct: false, explanation: "Geen effect." }
+            { text: "Kortere nachten", correct: false, explanation: "De lengte van nachten wordt niet beïnvloed door stormen of zeespiegelstijging." }
         ]
     },
     {
         question: "Welke van deze is GEEN extreem weer?",
         answers: [
-            { text: "Normale zomerdag", correct: true, explanation: "Dit valt binnen normaal weer." },
-            { text: "Hittegolf", correct: false, explanation: "Dit is extreem weer." },
-            { text: "Orkaan", correct: false, explanation: "Dit is extreem weer." },
-            { text: "Overstroming", correct: false, explanation: "Dit is extreem weer." }
+            { text: "Normale zomerdag", correct: true, explanation: "Een normale zomerdag valt binnen de standaard weersverwachtingen en is dus geen extreem weer." },
+            { text: "Hittegolf", correct: false, explanation: "Hittegolven zijn periodes van extreem hoge temperaturen en vallen onder extreem weer." },
+            { text: "Orkaan", correct: false, explanation: "Orkanen zijn krachtige stormen met extreem veel wind en regen, een vorm van extreem weer." },
+            { text: "Overstroming", correct: false, explanation: "Overstromingen door hevige regen of stormvloeden zijn een voorbeeld van extreem weer." }
         ]
     },
     {
         question: "Waarom is extreem weer gevaarlijk voor mensen?",
         answers: [
-            { text: "Het kan schade, evacuaties en slachtoffers veroorzaken", correct: true, explanation: "Extreem weer kan grote schade en gevaarlijke situaties veroorzaken." },
-            { text: "Het maakt dagen korter", correct: false, explanation: "Geen invloed." },
-            { text: "Het verandert de kleur van de lucht", correct: false, explanation: "Niet relevant." },
-            { text: "Het stopt de wind", correct: false, explanation: "Niet waar." }
+            { text: "Het kan schade, evacuaties en slachtoffers veroorzaken", correct: true, explanation: "Extreem weer kan gebouwen beschadigen, wegen onbruikbaar maken en mensenlevens bedreigen, daarom is het belangrijk om waakzaam te zijn en voorbereid te zijn." },
+            { text: "Het maakt dagen korter", correct: false, explanation: "De lengte van dagen wordt niet beïnvloed door extreem weer." },
+            { text: "Het verandert de kleur van de lucht", correct: false, explanation: "Kleurveranderingen van de lucht zijn geen direct gevaar." },
+            { text: "Het stopt de wind", correct: false, explanation: "Wind kan variëren, maar extreem weer stopt het niet." }
         ]
     },
 
-    // OPEN VRAGEN (verbeterde uitleg)
+    // OPEN VRAGEN 
     {
         type: "open",
         question: "Noem een voorbeeld van extreem weer dat vaker voorkomt door klimaatverandering.",
