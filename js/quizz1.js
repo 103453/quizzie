@@ -99,7 +99,6 @@ const questions = [
         ],
         explanation: "Bij cementproductie komt veel CO₂ vrij."
     },
-
     {
         type: "open",
         question: "Noem een hernieuwbare energiebron.",
@@ -115,7 +114,7 @@ const questions = [
     {
         type: "open",
         question: "Noem een vervoermiddel zonder CO₂-uitstoot.",
-        correctAnswers: ["fiets", "lopen"],
+        correctAnswers: ["fiets", "lopen", "hond uitlaten"],
         explanation: "Fietsen en lopen stoten geen CO₂ uit."
     },
     {
@@ -131,137 +130,152 @@ const questions = [
         explanation: "Door minder uitstoot te veroorzaken help je klimaatverandering te verminderen."
     }
 ];
-
+ 
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButton = document.getElementById("next-btn");
-
-const explanationElement = document.createElement("div");
-explanationElement.style.marginTop = "10px";
-document.querySelector(".quiz").appendChild(explanationElement);
-
+const quizImage = document.getElementById("quiz-image");
 const correctSound = document.getElementById("correctSound");
 const wrongSound = document.getElementById("wrongSound");
-
+ 
 let currentQuestionIndex = 0;
 let score = 0;
-
-function startQuiz(){
+let userName = "";
+ 
+const images = [
+    "/Assets/Fotos/uitstoot1.jpg", "/Assets/Fotos/uitstoot2.jpg", "/Assets/Fotos/uitstoot3.jpg",
+    "/Assets/Fotos/uitstoot4.jpg", "/Assets/Fotos/uitstoot5.png", "/Assets/Fotos/uitstoot6.jpg",
+    "/Assets/Fotos/uitstoot7.jpg", "/Assets/Fotos/uitstoot8.png", "/Assets/Fotos/uitstoot9.webp",
+    "/Assets/Fotos/uitstoot10.jpg", "/Assets/Fotos/uitstoot11.avif", "/Assets/Fotos/uitstoot12.png",
+    "/Assets/Fotos/uitstoot13.png", "/Assets/Fotos/uitstoot14.png", "/Assets/Fotos/uitstoot15.png"
+];
+ 
+function askName() {
+    userName = prompt("Wat is je naam?");
+    if (!userName) userName = "Gast";
+}
+ 
+function startQuiz() {
+    askName();
     currentQuestionIndex = 0;
     score = 0;
     nextButton.innerHTML = "Volgende";
     showQuestion();
 }
-
-function showQuestion(){
+ 
+function showQuestion() {
     resetState();
-    explanationElement.innerHTML = "";
-
     let currentQuestion = questions[currentQuestionIndex];
+    
+    quizImage.src = images[currentQuestionIndex % images.length];
+    quizImage.style.display = "block";
+ 
     questionElement.innerHTML = `${currentQuestionIndex + 1}. ${currentQuestion.question}`;
-
-    if(currentQuestion.type === "open"){
+ 
+    if (currentQuestion.type === "open") {
         const input = document.createElement("input");
         input.type = "text";
-        input.placeholder = "Typ je antwoord...";
+        input.placeholder = "Typ je antwoord en druk op Enter...";
         input.classList.add("btn");
         answerButtons.appendChild(input);
-
-        const button = document.createElement("button");
-        button.innerHTML = "Controleer";
-        button.classList.add("btn");
-
-        button.onclick = function(){
-            const userAnswer = input.value.toLowerCase();
-            const isCorrect = currentQuestion.correctAnswers.some(ans => userAnswer.includes(ans));
-
-            if(isCorrect){
+ 
+        const btn = document.createElement("button");
+        btn.innerHTML = "Controleer";
+        btn.classList.add("btn");
+ 
+        const checkAnswer = () => {
+            if (nextButton.style.display === "block") return;
+ 
+            const userVal = input.value.toLowerCase().trim();
+            const isCorrect = currentQuestion.correctAnswers.some(ans => userVal.includes(ans));
+            
+            if (isCorrect) {
                 score++;
-                input.style.backgroundColor = "#9aeabc";
-                explanationElement.innerHTML = "Goed! " + currentQuestion.explanation;
                 correctSound.play();
-            } else{
-                input.style.backgroundColor = "#ff9393";
-                explanationElement.innerHTML = "Fout. " + currentQuestion.explanation;
+                input.style.backgroundColor = "#9aeabc";
+                showExplanation(currentQuestion.explanation, true);
+            } else {
                 wrongSound.play();
+                input.style.backgroundColor = "#ff9393";
+                showExplanation(currentQuestion.explanation, false);
             }
+            input.disabled = true;
+            btn.style.display = "none";
             nextButton.style.display = "block";
         };
-
-        answerButtons.appendChild(button);
-
+ 
+        btn.onclick = checkAnswer;
+        input.addEventListener("keydown", (e) => { if (e.key === "Enter") checkAnswer(); });
+        
+        answerButtons.appendChild(btn);
+        input.focus();
+ 
     } else {
         currentQuestion.answers.forEach(answer => {
             const button = document.createElement("button");
             button.innerHTML = answer.text;
             button.classList.add("btn");
-
-            if(answer.correct){
-                button.dataset.correct = answer.correct;
-            }
-
-            button.addEventListener("click", selectAnswer);
+            if (answer.correct) button.dataset.correct = true;
+            button.onclick = selectAnswer;
             answerButtons.appendChild(button);
         });
     }
 }
-
-function resetState(){
-    nextButton.style.display = "none";
-    while(answerButtons.firstChild){
-        answerButtons.removeChild(answerButtons.firstChild);
-    }
-}
-
-function selectAnswer(e){
+ 
+function selectAnswer(e) {
     const selectedBtn = e.target;
     const isCorrect = selectedBtn.dataset.correct === "true";
     const currentQuestion = questions[currentQuestionIndex];
-
-    if(isCorrect){
+ 
+    if (isCorrect) {
         selectedBtn.classList.add("correct");
         score++;
-        explanationElement.innerHTML = "Goed! " + currentQuestion.explanation;
         correctSound.play();
-    } else{
+        showExplanation(currentQuestion.explanation, true);
+    } else {
         selectedBtn.classList.add("incorrect");
-        explanationElement.innerHTML = "Fout. " + currentQuestion.explanation;
         wrongSound.play();
+        showExplanation(currentQuestion.explanation, false);
     }
-
+ 
     Array.from(answerButtons.children).forEach(button => {
-        if(button.dataset.correct === "true"){
-            button.classList.add("correct");
-        }
+        if (button.dataset.correct === "true") button.classList.add("correct");
         button.disabled = true;
     });
-
     nextButton.style.display = "block";
 }
-
-function showScore(){
+ 
+function showExplanation(text, isCorrect) {
+    const div = document.createElement("div");
+    div.classList.add(isCorrect ? "correct-explanation" : "incorrect-explanation");
+    div.innerHTML = (isCorrect ? "<b>Goed!</b> " : "<b>Helaas...</b> ") + text;
+    answerButtons.appendChild(div);
+}
+ 
+function resetState() {
+    nextButton.style.display = "none";
+    while (answerButtons.firstChild) {
+        answerButtons.removeChild(answerButtons.firstChild);
+    }
+}
+ 
+function showScore() {
     resetState();
-    questionElement.innerHTML = `Je had ${score} van de ${questions.length} goed!`;
-    explanationElement.innerHTML = "";
+    quizImage.style.display = "none";
+    questionElement.innerHTML = `Klaar, ${userName}! <br> Je score is ${score} van de ${questions.length}.`;
     nextButton.innerHTML = "Opnieuw";
     nextButton.style.display = "block";
 }
-
-function handleNextButton(){
+ 
+nextButton.onclick = () => {
     currentQuestionIndex++;
-    if(currentQuestionIndex < questions.length){
+    if (currentQuestionIndex < questions.length) {
         showQuestion();
-    } else{
+    } else if (currentQuestionIndex === questions.length) {
         showScore();
-    }
-}
-
-nextButton.addEventListener("click", ()=>{
-    if(currentQuestionIndex < questions.length){
-        handleNextButton();
-    } else{
+    } else {
         startQuiz();
     }
-});
-
+};
+ 
 startQuiz();
