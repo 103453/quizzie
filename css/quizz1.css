@@ -106,3 +106,28 @@ body{
     height: auto;
     object-fit: cover;
 }
+
+#home {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    padding: 10px 30px; 
+    border: 1px solid #222;
+    font-size: 20px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 100;       
+}
+
+#home a {
+    text-decoration: none; 
+    color: #001e4d;
+    font-weight: bold;
+}
+
+#home:hover {
+    background-color: #f0f0f0;
+}
