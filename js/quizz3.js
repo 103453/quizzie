@@ -103,16 +103,16 @@ let score = 0;
 let userName = "";
  
 const images = [
-    "/quizzie/Assets/Fotos/ocean1.jpg",
-    "/quizzie/Assets/Fotos/ocean2.jpeg",
-    "/quizzie/Assets/Fotos/ocean3.jpg",
-    "/quizzie/Assets/Fotos/ocean4.jpg",
-    "/quizzie/Assets/Fotos/ocean5.jpg",
-    "/quizzie/Assets/Fotos/ocean6.jpg",
-    "/quizzie/Assets/Fotos/ocean7.jpg",
-    "/quizzie/Assets/Fotos/ocean8.jpg",
-    "/quizzie/Assets/Fotos/ocean9.avif",
-    "/quizzie/Assets/Fotos/ocean10.webp"
+    "/Assets/Fotos/ocean1.jpg",
+    "/Assets/Fotos/ocean2.jpeg",
+    "/Assets/Fotos/ocean3.jpg",
+    "/Assets/Fotos/ocean4.jpg",
+    "/Assets/Fotos/ocean5.jpg",
+    "/Assets/Fotos/ocean6.jpg",
+    "/Assets/Fotos/ocean7.jpg",
+    "/Assets/Fotos/ocean8.jpg",
+    "/Assets/Fotos/ocean9.avif",
+    "/Assets/Fotos/ocean10.webp"
 ];
  
 // naam
@@ -242,7 +242,7 @@ function showScore() {
     resetState();
     questionElement.innerHTML = `${userName}, je had ${score} van de ${questions.length} goed!`;
  
-    extraImage.src = "/quizzie/Assets/Fotos/klaar.jpeg";
+    extraImage.src = "Assets/Fotos/klaar.jpeg";
  
     nextButton.innerHTML = "Opnieuw";
     nextButton.style.display = "block";
