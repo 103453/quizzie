@@ -143,11 +143,11 @@ let score = 0;
 let userName = "";
  
 const images = [
-    "/Assets/Fotos/uitstoot1.jpg", "/Assets/Fotos/uitstoot2.jpg", "/Assets/Fotos/uitstoot3.jpg",
-    "/Assets/Fotos/uitstoot4.jpg", "/Assets/Fotos/uitstoot5.png", "/Assets/Fotos/uitstoot6.jpg",
-    "/Assets/Fotos/uitstoot7.jpg", "/Assets/Fotos/uitstoot8.png", "/Assets/Fotos/uitstoot9.webp",
-    "/Assets/Fotos/uitstoot10.jpg", "/Assets/Fotos/uitstoot11.avif", "/Assets/Fotos/uitstoot12.png",
-    "/Assets/Fotos/uitstoot13.png", "/Assets/Fotos/uitstoot14.png", "/Assets/Fotos/uitstoot15.png"
+    "../Assets/Fotos/uitstoot1.jpg", "../Assets/Fotos/uitstoot2.jpg", "../Assets/Fotos/uitstoot3.jpg",
+    "../Assets/Fotos/uitstoot4.jpg", "../Assets/Fotos/uitstoot5.png", "../Assets/Fotos/uitstoot6.jpg",
+    "../Assets/Fotos/uitstoot7.jpg", "../Assets/Fotos/uitstoot8.png", "../Assets/Fotos/uitstoot9.webp",
+    "../Assets/Fotos/uitstoot10.jpg", "../Assets/Fotos/uitstoot11.avif", "../Assets/Fotos/uitstoot12.png",
+    "../Assets/Fotos/uitstoot13.png", "../Assets/Fotos/uitstoot14.png", "../Assets/Fotos/uitstoot15.png"
 ];
  
 function askName() {
